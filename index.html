@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Coming Soon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    h1 {
+      font-size: 36px;
+    }
+    p {
+      font-size: 24px;
+      color: #666;
+    }
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="avatar">
+    <img src="https://avatars.githubusercontent.com/u/16532928?v=4" alt="Avatar">
+  </div>
+  <h1>Coming Soon</h1>
+  <p id="current-time"></p>
+
+  <script>
+    // Function to update the current time every second
+    function updateTime() {
+      const currentTimeElement = document.getElementById("current-time");
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      currentTimeElement.textContent = "Current Time: " + timeString;
+    }
+
+    // Call updateTime() immediately and set it to be called every second
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
