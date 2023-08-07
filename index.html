@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Coming Soon</title>
   <style>
@@ -7,14 +8,51 @@
       font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 50px;
+      background-color: #ffffff;
+      /* White background for light mode */
+      color: #000000;
+      /* Black text for light mode */
     }
+
     h1 {
       font-size: 36px;
     }
+
+    p {
+      font-size: 24px;
+      color: #666666;
+      /* Secondary text color for light mode */
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        /* Near-black background for dark mode */
+        color: #ffffff;
+        /* White text for dark mode */
+      }
+
+      p {
+        color: #aaaaaa;
+        /* Light gray secondary text color for dark mode */
+      }
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
     p {
       font-size: 24px;
       color: #666;
     }
+
     .avatar {
       width: 150px;
       height: 150px;
@@ -22,6 +60,7 @@
       overflow: hidden;
       margin: 0 auto 20px;
     }
+
     .avatar img {
       width: 100%;
       height: 100%;
@@ -29,6 +68,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="avatar">
     <img src="https://avatars.githubusercontent.com/u/16532928?v=4" alt="Avatar">
@@ -50,4 +90,5 @@
     setInterval(updateTime, 1000);
   </script>
 </body>
+
 </html>
