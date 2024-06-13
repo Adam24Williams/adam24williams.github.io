@@ -21,7 +21,6 @@ header {
     color: var(--header-color);
     padding: 1rem 0;
     text-align: center;
-    position: relative;
 }
 
 main {
