@@ -5,6 +5,7 @@
     --header-color: #fff;
     --content-background: #fff;
     --content-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --sidebar-width: 25%;
 }
 
 body {
@@ -14,6 +15,9 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -31,7 +35,39 @@ nav {
     padding: 0 1rem;
 }
 
+.container {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    width: var(--sidebar-width);
+    background: var(--header-background);
+    color: var(--header-color);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+aside h2 {
+    margin-top: 0;
+}
+
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-nav ul li {
+    margin: 0.5rem 0;
+}
+
+.side-nav ul li a {
+    color: var(--header-color);
+    text-decoration: none;
+}
+
 main {
+    flex: 1;
     padding: 1rem;
     max-width: 800px;
     margin: 0 auto;
