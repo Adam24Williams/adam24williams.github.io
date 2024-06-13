@@ -9,11 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         icon.textContent = theme === 'dark' ? '🌜' : '🌞';
     }
 
-    if (userPrefersDark) {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
+    const currentTheme = userPrefersDark ? 'dark' : 'light';
+    setTheme(currentTheme);
 
     themeToggle.addEventListener('click', function() {
         const currentTheme = document.documentElement.getAttribute('data-theme');
