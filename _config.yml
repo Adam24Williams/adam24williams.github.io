@@ -8,7 +8,8 @@ author:
   email: adamlwilliams@pm.me
   github: Adam24Williams
   linkedin: adam24williams
-  bio: "Hi, I'm Adam. Update this bio in _config.yml."
+  tagline: "Engineer &amp; writer"
+  bio: "Hi, I'm Adam. I build software and write about what I learn along the way. Edit this bio in _config.yml."
   avatar: "https://avatars.githubusercontent.com/u/16532928?v=4"
 
 markdown: kramdown

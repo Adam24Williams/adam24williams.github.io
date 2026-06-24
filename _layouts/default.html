@@ -7,7 +7,7 @@
   <meta name="description" content="{{ page.description | default: site.description }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   {% seo %}
   {% feed_meta %}
@@ -15,7 +15,16 @@
 <body>
   <nav>
     <div class="container nav-inner">
-      <a href="{{ '/' | relative_url }}" class="nav-brand">{{ site.author.name }}</a>
+      {%- assign initials = '' -%}
+      {%- assign name_words = site.author.name | split: ' ' -%}
+      {%- for word in name_words -%}
+        {%- assign first_char = word | slice: 0 -%}
+        {%- assign initials = initials | append: first_char -%}
+      {%- endfor -%}
+      <a href="{{ '/' | relative_url }}" class="nav-brand">
+        <span class="brand-mark">{{ initials | upcase }}</span>
+        {{ site.author.name }}
+      </a>
       <ul class="nav-links">
         <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
         <li><a href="{{ '/blog' | relative_url }}" {% if page.url contains '/blog' %}class="active"{% endif %}>Blog</a></li>
@@ -28,7 +37,9 @@
   <footer>
     <div class="container footer-inner">
       <span>© {{ 'now' | date: '%Y' }} {{ site.author.name }}</span>
-      <span>Jekyll · GitHub Pages</span>
+      <span>
+        {% if site.author.github %}<a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a> · {% endif %}Built with Jekyll
+      </span>
     </div>
   </footer>
 </body>
