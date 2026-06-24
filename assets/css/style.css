@@ -99,6 +99,15 @@ nav .container {
   border-bottom: 1px solid var(--border);
 }
 
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
 .hero h1 {
   font-size: 2.5rem;
   font-weight: 700;
