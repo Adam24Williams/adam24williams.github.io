@@ -1,0 +1,19 @@
+title: Adam Williams
+description: Personal website and blog
+url: "https://adam24williams.github.io"
+baseurl: ""
+
+author:
+  name: Adam Williams
+  email: adamlwilliams@pm.me
+  github: Adam24Williams
+  linkedin: adam24williams
+  bio: "Hi, I'm Adam. Update this bio in _config.yml."
+
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

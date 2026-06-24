@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<div class="container">
+  <header class="page-header">
+    <h1>Blog</h1>
+    <p class="page-subtitle">{{ site.posts.size }} post{% if site.posts.size != 1 %}s{% endif %}, sorted by date</p>
+  </header>
+
+  <section class="section">
+    {% if site.posts.size == 0 %}
+    <p class="empty-state">No posts yet. Add a <code>.md</code> file to <code>_posts/</code> to get started.</p>
+    {% else %}
+    <ul class="post-list">
+      {% for post in site.posts %}
+      <li class="post-item">
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+        {% if post.excerpt %}
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+</div>
