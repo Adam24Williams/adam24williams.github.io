@@ -477,6 +477,169 @@ nav { border-bottom-color: var(--border); }
 
 .post-content th { background: var(--bg-card); font-weight: 650; color: var(--text); }
 
+/* ── Home grid (posts + sidebar) ── */
+.home-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.home-main { min-width: 0; }
+
+.home-sidebar {
+  position: sticky;
+  top: 80px;
+  display: grid;
+  gap: 1rem;
+}
+
+.sidebar-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-raised);
+  padding: 1.1rem 1.2rem 1.3rem;
+}
+
+.sidebar-featured {
+  background:
+    radial-gradient(120% 120% at 0% 0%, var(--glow-1), transparent 60%),
+    var(--bg-raised);
+  border-color: var(--border-hover);
+}
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.95rem;
+}
+
+.sidebar-heading .star { color: var(--accent-2); -webkit-text-fill-color: var(--accent-2); }
+
+/* Featured list */
+.featured-list { list-style: none; display: grid; gap: 0.25rem; }
+
+.featured-list a {
+  display: block;
+  padding: 0.5rem 0.6rem;
+  margin: 0 -0.6rem;
+  border-radius: 9px;
+  transition: background 0.15s;
+}
+
+.featured-list a:hover { background: var(--bg-card); }
+
+.featured-title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 580;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.featured-date {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--text-3);
+}
+
+/* Tag cloud in sidebar */
+.tag-cloud {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 0.8rem;
+  font-weight: 550;
+  color: var(--text-2);
+  transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.tag-chip:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+
+.tag-chip.is-featured {
+  border-color: rgba(192, 132, 252, 0.4);
+  color: var(--accent-hover);
+}
+
+.tag-chip .star { color: var(--accent-2); }
+
+.tag-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.2em;
+  padding: 0 0.35em;
+  height: 1.2em;
+  border-radius: 999px;
+  background: var(--bg);
+  font-family: var(--mono);
+  font-size: 0.72em;
+  color: var(--text-3);
+}
+
+/* Inline tag chips on post listings / post header */
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+.post-tag {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 0.72rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--text-3);
+}
+
+a.post-tag { transition: color 0.15s, border-color 0.15s, background 0.15s; }
+a.post-tag:hover { color: var(--text); border-color: var(--border-hover); background: var(--bg-card-hover); }
+
+.post-tag.is-featured {
+  border-color: rgba(192, 132, 252, 0.4);
+  color: var(--accent-hover);
+}
+
+/* ── Topics page ── */
+.tag-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.tag-section { scroll-margin-top: 80px; margin-bottom: 3rem; }
+.tag-section:last-child { margin-bottom: 4.5rem; }
+.tag-section .section-heading { text-transform: none; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--text); }
+
 /* ── Footer ── */
 footer {
   border-top: 1px solid var(--border);
@@ -497,6 +660,11 @@ footer {
 .footer-inner a:hover { color: var(--accent); }
 
 /* ── Responsive ── */
+@media (max-width: 720px) {
+  .home-grid { grid-template-columns: 1fr; gap: 2.75rem; }
+  .home-sidebar { position: static; top: auto; }
+}
+
 @media (max-width: 600px) {
   .hero { padding: 3.5rem 0 3rem; }
 

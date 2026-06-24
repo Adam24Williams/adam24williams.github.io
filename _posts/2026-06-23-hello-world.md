@@ -3,6 +3,7 @@ layout: post
 title: "Hello, World"
 date: 2026-06-23
 excerpt: "The first post on this site — a quick note on getting started."
+tags: [meta, featured]
 ---
 
 Welcome to the blog. This is your first post.

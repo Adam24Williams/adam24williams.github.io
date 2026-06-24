@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<div class="container">
+
+  <header class="page-header">
+    <h1>{{ page.title | default: "Topics" }}</h1>
+    <p class="page-subtitle">{{ site.tags.size }} tag{% if site.tags.size != 1 %}s{% endif %}</p>
+  </header>
+
+  {% if site.tags.size == 0 %}
+  <p class="empty-state" style="padding: 3rem 0;">No tags yet — add a <code>tags:</code> field to a post.</p>
+  {% else %}
+
+  {% assign sorted_tags = site.tags | sort %}
+
+  <div class="tag-index">
+    {% if site.tags.featured.size > 0 %}
+    <a href="#featured" class="tag-chip is-featured"><span class="star">★</span> featured<span class="tag-count">{{ site.tags.featured.size }}</span></a>
+    {% endif %}
+    {% for tag in sorted_tags %}
+      {% unless tag[0] == 'featured' %}
+      <a href="#{{ tag[0] | slugify }}" class="tag-chip">{{ tag[0] }}<span class="tag-count">{{ tag[1].size }}</span></a>
+      {% endunless %}
+    {% endfor %}
+  </div>
+
+  {% comment %} Featured first, then the rest alphabetically. {% endcomment %}
+  {% assign ordered = sorted_tags %}
+  {% if site.tags.featured.size > 0 %}
+  <section class="tag-section" id="featured">
+    <h2 class="section-heading"><span class="star">★</span> Featured</h2>
+    {% assign posts = site.tags.featured | sort: 'date' | reverse %}
+    {% include tag-post-list.html posts=posts %}
+  </section>
+  {% endif %}
+
+  {% for tag in ordered %}
+    {% unless tag[0] == 'featured' %}
+    <section class="tag-section" id="{{ tag[0] | slugify }}">
+      <h2 class="section-heading">{{ tag[0] }}</h2>
+      {% assign posts = tag[1] | sort: 'date' | reverse %}
+      {% include tag-post-list.html posts=posts %}
+    </section>
+    {% endunless %}
+  {% endfor %}
+
+  {% endif %}
+
+</div>
