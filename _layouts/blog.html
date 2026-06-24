@@ -2,26 +2,30 @@
 layout: default
 ---
 <div class="container">
+
   <header class="page-header">
-    <h1>Blog</h1>
-    <p class="page-subtitle">{{ site.posts.size }} post{% if site.posts.size != 1 %}s{% endif %}, sorted by date</p>
+    <h1>Writing</h1>
+    <p class="page-subtitle">{{ site.posts.size }} post{% if site.posts.size != 1 %}s{% endif %}</p>
   </header>
 
-  <section class="section">
-    {% if site.posts.size == 0 %}
-    <p class="empty-state">No posts yet. Add a <code>.md</code> file to <code>_posts/</code> to get started.</p>
-    {% else %}
-    <ul class="post-list">
-      {% for post in site.posts %}
-      <li class="post-item">
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-        <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+  {% if site.posts.size == 0 %}
+  <p class="empty-state" style="padding: 3rem 0;">No posts yet — check back soon.</p>
+  {% else %}
+  <ul class="post-list">
+    {% for post in site.posts %}
+    <li class="post-item">
+      <a href="{{ post.url | relative_url }}" class="post-item-link">
+        <div class="post-row">
+          <span class="post-title">{{ post.title }}</span>
+          <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        </div>
         {% if post.excerpt %}
-        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
         {% endif %}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </section>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
 </div>
